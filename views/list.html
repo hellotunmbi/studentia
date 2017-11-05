@@ -1,0 +1,38 @@
+
+<div class="row" ng-controller="listCtrl">
+    
+        <div class="col-md-12 deleted_message"><div class="alert alert-danger"> Student Record Deleted</div></div>
+
+    <table class="table table-striped" ng-show="isRecord">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Sex</th>
+                <th scope="col">Faculty</th>
+                <th scope="col">Department</th>
+                <th scope="col">Level</th>
+                <th scope="col">Edit/Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="s in students" class="{{ s._id }}">
+                <th scope="row">{{ $index+1 }}</th>
+                <td class="capitalize_letter">{{ s.last_name }}, {{ s.first_name }}</td>
+                <td class="capitalize_letter">{{ s.sex }}</td>
+                <td class="capitalize_letter">{{ s.faculty }}</td>
+                <td class="capitalize_letter">{{ s.department }}</td>
+                <td>{{ s.level }}</td>
+                <td><div class="btn btn-primary">Edit</div> <button id="{{ s._id }}" class="btn btn-danger" confirmed-click="delete()" ng-confirm-click="Are you sure?">Delete</button> </td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <table class="table" style="text-align: center" ng-show="!isRecord">
+        <tbody>
+            <tr>
+                <td colspan="7" >{{ noRecord }} <br/> <a href="#/register">Register New Student</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

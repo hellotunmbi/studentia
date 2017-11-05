@@ -1,0 +1,53 @@
+
+
+.welome_heading {
+    padding: .5rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0.3rem;
+    background-color: #e9ecef;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+.offset-md-2 {
+    margin-left: 16.666667% !important;
+}
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: .4rem;
+}
+.student_register {
+    border: 1px solid rgba(90, 67, 67, 0.3);
+    padding: 2rem;
+    border-radius: 5px;
+    margin: 0 1rem;
+}
+
+#female {
+    margin-left: 2rem;
+}
+
+.level_options {
+    margin-left: .5rem;
+}
+
+.level_options option {
+    margin-top: .4rem;
+    padding: .2rem;
+}
+
+.notification {
+    margin-top: 1rem;
+}
+
+.capitalize_letter {
+    text-transform: capitalize;
+}
+
+.deleted_message {
+    visibility: hidden;
+
+}
