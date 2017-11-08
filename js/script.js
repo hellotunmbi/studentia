@@ -16,11 +16,6 @@ app.config(function($routeProvider) {
             controller: 'listCtrl'
         })
 
-        .when("/update/:id", {
-            templateUrl: 'views/update.html',
-            controller: 'updateCtrl'
-        })
-
         .otherwise({
             templateUrl: 'views/register.html'
         })
@@ -99,6 +94,8 @@ app.controller('listCtrl', ['$scope', '$http', '$route', function ($scope, $http
     $scope.isRecord = false;
     $scope.noRecord;
 
+    $scope.notLoaded = true;
+
     // Call API to get all students
     $http({ 
         method: 'GET',
@@ -113,6 +110,7 @@ app.controller('listCtrl', ['$scope', '$http', '$route', function ($scope, $http
           if($scope.students.length < 1) {
               $scope.noRecord = "No record found";
           } else {
+              $scope.notLoaded = false;
               console.log("Some record found");
               $scope.isRecord = true;
 
@@ -145,67 +143,7 @@ app.controller('listCtrl', ['$scope', '$http', '$route', function ($scope, $http
 
 }]);
 
-
 /** ********************************************************* */
-
-// Update Single Student Record Controller
-app.controller('updateCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
-    
-    // alert($routeParams.id);
-    let studentId = $routeParams.id;
-
-    $scope.students = {};
-    $scope.isDisabled = false;
-    $scope.updateValue = "Update Record";
-
-    $http({ 
-        method: 'GET',
-        url: base_url + 'student' + '/' +studentId,
-        headers: { 'Content-Type': 'application/json' }
-    })
-      .success((data) => {
-          $scope.students = data;
-
-          console.log(data);
-
-          if($scope.students.length < 1) {
-              
-            $scope.noRecord = "No record found";
-
-          } else {
-            
-              console.log("Some record found");
-
-
-          }
-      });
-
-
-      // Action to Update Record on Submit
-      $scope.update = () => {
-        
-        // Call delete API to delete single student
-        $http({ 
-            method: 'PUT',
-            url: base_url + 'student' + '/' + studentId,
-            data: $scope.students,
-            headers: { 'Content-Type': 'application/json' }
-        })
-            .success((data) => {
-                console.log(data);
-
-                $('.updated_message').css('visibility', 'visible');
-
-            })
-        }
-
-
-
-}]);
-
-
-/** ********************************************************* */
-
 
 // Create ng-confirm-click directive to show confirm dialog (delete)
 app.directive('ngConfirmClick', [

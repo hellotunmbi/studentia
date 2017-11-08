@@ -1,4 +1,7 @@
 
+<div class="row" ng-show="notLoaded">
+    <div class="col-md-12" style="text-align: center">Retrieving List...</div>
+</div>
 <div class="row" ng-controller="listCtrl">
     
         <div class="col-md-12 deleted_message"><div class="alert alert-danger"> Student Record Deleted</div></div>
@@ -23,7 +26,7 @@
                 <td class="capitalize_letter">{{ s.faculty }}</td>
                 <td class="capitalize_letter">{{ s.department }}</td>
                 <td>{{ s.level }}</td>
-                <td><a class="btn btn-primary" href="#/update/{{ s._id }}">Edit</a> <button id="{{ s._id }}" class="btn btn-danger" confirmed-click="delete()" ng-confirm-click="Are you sure?">Delete</button> </td>
+                <td><div class="btn btn-primary">Edit</div> <button id="{{ s._id }}" class="btn btn-danger" confirmed-click="delete()" ng-confirm-click="Are you sure?">Delete</button> </td>
             </tr>
             
         </tbody>
